@@ -11,11 +11,10 @@ import Combine
 class ViewController: UIViewController {
     
     var countriesViewModel: CountriesViewModel?
-    //    var data: Observable<[String: [ProductsCellViewModel]]> = Observable([:])
     var searchCountry = [String]()
     var searching = false
     var countries: [Countries] = [] // This will hold the list of countries to display
-
+    
     
     @IBOutlet weak var searchBar: UISearchBar!
     @IBOutlet weak var tableView: UITableView!
@@ -44,7 +43,7 @@ class ViewController: UIViewController {
     
 }
 
-extension ViewController: UITableViewDataSource {
+extension ViewController: UITableViewDataSource, UITableViewDelegate {
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         if searching {
@@ -61,28 +60,33 @@ extension ViewController: UITableViewDataSource {
             cell.countyLabel.text = searchCountry[indexPath.row]
         } else {
             cell.countyLabel.text = countriesViewModel?.countries[indexPath.row].name?.common
-            // cell.flagImage.image = countriesViewModel?.countries[indexPath.row].flag
-            //            if countriesViewModel?.countries[indexPath.row].flag != nil {
-            //                //        cell.flagImage.image = UIImage(data: (countriesViewModel?.countries[indexPath.row].flag)!)
-            //                //todo flag
-            //            }
-            //            }else {
-            //                cell.flagImage.image =  UIImage(systemName: "UnknownFlag")
-            //            }
-            
+            if countriesViewModel?.countries[indexPath.row].flag != nil {
+                cell.flagImage.text = countriesViewModel?.countries[indexPath.row].flag
+            }
+            else {
+                cell.flagImage.isHidden = true
+                cell.defaultFlagImageview.image = UIImage(named: "UnknownFlag")
+            }
         }
         return cell
     }
     
-    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        guard let selectedCountry = countriesViewModel?.countries[indexPath.row] else {
-            return
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if segue.identifier == "toDetailsVC" {
+            if let destinationVC = segue.destination as? CountryDetailsViewController,
+               let selectedCountry = sender as? Countries {
+                destinationVC.country = selectedCountry
+            }
         }
-        
-        // Navigate to details screen passing the selected country's data
-        let detailsViewController = CountryDetailsViewController()
-        detailsViewController.country = selectedCountry
-        navigationController?.pushViewController(detailsViewController, animated: true)
+    }
+    
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        tableView.deselectRow(at: indexPath, animated: true)
+        guard let selectedCountry = countriesViewModel?.countries[indexPath.row] else {
+                return
+            }
+        // Use performSegue(withIdentifier:sender:) to trigger the segue
+        performSegue(withIdentifier: "toDetailsVC", sender: selectedCountry)
     }
 }
 

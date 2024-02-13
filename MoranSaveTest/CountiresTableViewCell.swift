@@ -11,7 +11,8 @@ import UIKit
 class CountiresTableViewCell: UITableViewCell {
     
     @IBOutlet weak var countyLabel: UILabel!
-    @IBOutlet weak var flagImage: UIImageView!
+    @IBOutlet weak var flagImage: UILabel!
+    @IBOutlet weak var defaultFlagImageview: UIImageView!
     
     func cellConfig(vm: CountriesCellViewModel){
         if vm != nil {
@@ -40,7 +41,7 @@ class CountiresTableViewCell: UITableViewCell {
                 // Update UI on the main queue
                 DispatchQueue.main.async {
                     // Assign the downloaded image to your UIImageView
-                    self.flagImage.image = image
+                  //  self.flagImage.image = image
                 }
             } else {
                 // Handle nil data or failed image creation

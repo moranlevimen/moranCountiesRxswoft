@@ -14,35 +14,46 @@
             <rect key="frame" x="0.0" y="0.0" width="414" height="147"/>
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
-                <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="Ape-dd-yr0">
-                    <rect key="frame" x="286" y="44" width="122" height="64"/>
-                    <constraints>
-                        <constraint firstAttribute="height" constant="64" id="CHj-jn-eQf"/>
-                        <constraint firstAttribute="width" constant="122" id="FvF-Xm-OXh"/>
-                    </constraints>
-                </imageView>
-                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="4y4-xA-6lu">
-                    <rect key="frame" x="25" y="57" width="241" height="21"/>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="O3m-yP-y58">
+                    <rect key="frame" x="277" y="62" width="105" height="21"/>
                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                     <nil key="textColor"/>
                     <nil key="highlightedColor"/>
                 </label>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="4y4-xA-6lu">
+                    <rect key="frame" x="20" y="63" width="247" height="21"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="21" id="0oi-Yp-NsB"/>
+                        <constraint firstAttribute="width" constant="247" id="Naa-Hx-HjD"/>
+                    </constraints>
+                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                    <nil key="textColor"/>
+                    <nil key="highlightedColor"/>
+                </label>
+                <imageView hidden="YES" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="JQw-Uw-8Op">
+                    <rect key="frame" x="277" y="62" width="105" height="21"/>
+                </imageView>
             </subviews>
             <viewLayoutGuide key="safeArea" id="vUN-kp-3ea"/>
             <color key="backgroundColor" systemColor="systemBackgroundColor"/>
             <constraints>
-                <constraint firstItem="Ape-dd-yr0" firstAttribute="leading" secondItem="4y4-xA-6lu" secondAttribute="trailing" constant="20" id="Fja-9g-5HY"/>
-                <constraint firstItem="vUN-kp-3ea" firstAttribute="bottom" secondItem="Ape-dd-yr0" secondAttribute="bottom" constant="39" id="U1R-gO-TZn"/>
-                <constraint firstItem="vUN-kp-3ea" firstAttribute="bottom" secondItem="4y4-xA-6lu" secondAttribute="bottom" constant="69" id="d1G-if-DI9"/>
-                <constraint firstItem="4y4-xA-6lu" firstAttribute="leading" secondItem="vUN-kp-3ea" secondAttribute="leading" constant="25" id="eW0-Hh-OGJ"/>
-                <constraint firstItem="4y4-xA-6lu" firstAttribute="top" secondItem="vUN-kp-3ea" secondAttribute="top" constant="13" id="n09-FL-6YK"/>
-                <constraint firstItem="vUN-kp-3ea" firstAttribute="trailing" secondItem="Ape-dd-yr0" secondAttribute="trailing" constant="6" id="nFC-vY-6gn"/>
-                <constraint firstItem="Ape-dd-yr0" firstAttribute="top" secondItem="vUN-kp-3ea" secondAttribute="top" id="w8y-Sn-KTF"/>
+                <constraint firstItem="vUN-kp-3ea" firstAttribute="bottom" secondItem="O3m-yP-y58" secondAttribute="bottom" constant="64" id="7Z4-qg-yDf"/>
+                <constraint firstItem="vUN-kp-3ea" firstAttribute="trailing" secondItem="O3m-yP-y58" secondAttribute="trailing" constant="32" id="9M0-fF-izg"/>
+                <constraint firstItem="JQw-Uw-8Op" firstAttribute="top" secondItem="O3m-yP-y58" secondAttribute="top" id="AMk-kc-x6c"/>
+                <constraint firstItem="4y4-xA-6lu" firstAttribute="leading" secondItem="vUN-kp-3ea" secondAttribute="leading" constant="20" id="Afh-O4-lPp"/>
+                <constraint firstItem="JQw-Uw-8Op" firstAttribute="trailing" secondItem="O3m-yP-y58" secondAttribute="trailing" id="INi-97-u2C"/>
+                <constraint firstItem="O3m-yP-y58" firstAttribute="leading" secondItem="4y4-xA-6lu" secondAttribute="trailing" constant="10" id="Jal-4J-28Q"/>
+                <constraint firstItem="JQw-Uw-8Op" firstAttribute="leading" secondItem="O3m-yP-y58" secondAttribute="leading" id="KEn-MC-7BH"/>
+                <constraint firstItem="4y4-xA-6lu" firstAttribute="top" secondItem="vUN-kp-3ea" secondAttribute="top" constant="19" id="pAJ-Pw-RzA"/>
+                <constraint firstItem="vUN-kp-3ea" firstAttribute="bottom" secondItem="4y4-xA-6lu" secondAttribute="bottom" constant="63" id="rj1-Dh-ApI"/>
+                <constraint firstItem="JQw-Uw-8Op" firstAttribute="bottom" secondItem="O3m-yP-y58" secondAttribute="bottom" id="tM4-nb-HJu"/>
+                <constraint firstItem="O3m-yP-y58" firstAttribute="top" secondItem="vUN-kp-3ea" secondAttribute="top" constant="18" id="wUB-1d-qAz"/>
             </constraints>
             <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
             <connections>
                 <outlet property="countyLabel" destination="4y4-xA-6lu" id="uWK-h8-hSu"/>
-                <outlet property="flagImage" destination="Ape-dd-yr0" id="jjy-mN-4Kw"/>
+                <outlet property="defaultFlagImageview" destination="JQw-Uw-8Op" id="MiA-Rq-ZOI"/>
+                <outlet property="flagImage" destination="O3m-yP-y58" id="PK0-oM-54X"/>
             </connections>
             <point key="canvasLocation" x="85.507246376811594" y="-124.88839285714285"/>
         </view>
