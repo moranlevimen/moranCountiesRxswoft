@@ -6,7 +6,7 @@
 //
 
 import Foundation
-struct Countries: Codable {
+struct Countries: Codable, Equatable {
     let name: NameDetails?
     let region: String?
     let subregion: String?
@@ -14,13 +14,13 @@ struct Countries: Codable {
     var saved: Bool?
     
 
-    struct NameDetails: Codable {
+    struct NameDetails: Codable, Equatable {
         let common: String
     }
+    
+    static func == (lhs: Countries, rhs: Countries) -> Bool {
+            // Implement your equality logic here
+            return lhs.name == rhs.name && lhs.region == rhs.region && lhs.subregion == rhs.subregion
+        }
 }
 
-struct NameDetails: Codable {
-    let common: String?
-    let official: String?
-    
-}

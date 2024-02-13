@@ -21,6 +21,7 @@
 		EE8363F32B7B82180000A91D /* CountiresCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = EE8363F22B7B82180000A91D /* CountiresCell.xib */; };
 		EE8363F52B7B829E0000A91D /* CountiresTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = EE8363F42B7B829E0000A91D /* CountiresTableViewCell.swift */; };
 		EE8363F72B7B88690000A91D /* CountriesCellViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = EE8363F62B7B88690000A91D /* CountriesCellViewModel.swift */; };
+		EE8363F92B7BAB1D0000A91D /* CountryDetailsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EE8363F82B7BAB1D0000A91D /* CountryDetailsViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -40,6 +41,7 @@
 		EE8363F22B7B82180000A91D /* CountiresCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = CountiresCell.xib; sourceTree = "<group>"; };
 		EE8363F42B7B829E0000A91D /* CountiresTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CountiresTableViewCell.swift; sourceTree = "<group>"; };
 		EE8363F62B7B88690000A91D /* CountriesCellViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CountriesCellViewModel.swift; sourceTree = "<group>"; };
+		EE8363F82B7BAB1D0000A91D /* CountryDetailsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CountryDetailsViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -81,6 +83,7 @@
 				EE8363F62B7B88690000A91D /* CountriesCellViewModel.swift */,
 				EE8363D62B7B65580000A91D /* SceneDelegate.swift */,
 				EE8363D82B7B65580000A91D /* ViewController.swift */,
+				EE8363F82B7BAB1D0000A91D /* CountryDetailsViewController.swift */,
 				EE8363F42B7B829E0000A91D /* CountiresTableViewCell.swift */,
 				EE8363F22B7B82180000A91D /* CountiresCell.xib */,
 				EE8363DA2B7B65580000A91D /* Main.storyboard */,
@@ -169,6 +172,7 @@
 				EE8363F12B7B66310000A91D /* CountriesViewModel.swift in Sources */,
 				EE8363EB2B7B65ED0000A91D /* NetworkManager.swift in Sources */,
 				EE8363F72B7B88690000A91D /* CountriesCellViewModel.swift in Sources */,
+				EE8363F92B7BAB1D0000A91D /* CountryDetailsViewController.swift in Sources */,
 				EE8363D52B7B65580000A91D /* AppDelegate.swift in Sources */,
 				EE8363F52B7B829E0000A91D /* CountiresTableViewCell.swift in Sources */,
 				EE8363ED2B7B66050000A91D /* Countries.swift in Sources */,

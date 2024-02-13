@@ -34,4 +34,38 @@ class CountriesViewModel {
             print("Invalid URL")
         }
     }
+    
+    // Save country to UserDefaults
+       func saveCountry(_ country: Countries) {
+           var savedCountries = UserDefaults.standard.array(forKey: "SavedCountries") as? [[String: Any]] ?? []
+           let countryData: [String: Any] = ["name": country.name?.common ?? "", "region": country.region ?? "", "subregion": country.subregion ?? ""]
+           savedCountries.append(countryData)
+           UserDefaults.standard.set(savedCountries, forKey: "SavedCountries")
+       }
+    
+    // Retrieve saved countries from UserDefaults
+       func retrieveSavedCountries() -> [Countries] {
+           let savedCountriesData = UserDefaults.standard.array(forKey: "SavedCountries") as? [[String: Any]] ?? []
+           var savedCountries: [Countries] = []
+           for countryData in savedCountriesData {
+               let country = Countries(name: Countries.NameDetails(common: countryData["name"] as? String ?? ""), region: countryData["region"] as? String, subregion: countryData["subregion"] as? String, flag: nil, saved: true)
+               savedCountries.append(country)
+           }
+           return savedCountries
+       }
+
+    // Combine saved countries with fetched countries and handle scenarios where saved country may not appear in fetched list
+     func refreshList() {
+         let savedCountries = retrieveSavedCountries()
+            // Fetch fresh list of countries
+            fetchData()
+            // Combine saved countries with fetched countries
+            let combinedCountries = savedCountries + countries.filter { country in
+                // Check if the country is not already saved
+                !savedCountries.contains(where: { $0 == country })
+            }
+            // Update countries array with combined list
+            countries = combinedCountries
+     }
+
 }
