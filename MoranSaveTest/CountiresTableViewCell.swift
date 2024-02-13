@@ -13,10 +13,41 @@ class CountiresTableViewCell: UITableViewCell {
     @IBOutlet weak var countyLabel: UILabel!
     @IBOutlet weak var flagImage: UIImageView!
     
-    func cellConfig(){
+    func cellConfig(vm: CountriesCellViewModel){
+        if vm != nil {
+            //
+        } else {
+            print("error index out of range")
+        }
+        
+        countyLabel.text = vm.getName()
+       // flagImage.image = loadImageFromURL(vm.getFlagURL()!)
         
     }
     
+    func loadImageFromURL(_ url: URL) {
+        // Perform image download asynchronously
+        URLSession.shared.dataTask(with: url) { [weak self] data, response, error in
+            guard let self = self else { return }
+
+            if let error = error {
+                // Handle error
+                print("Error downloading image:", error)
+                return
+            }
+
+            if let data = data, let image = UIImage(data: data) {
+                // Update UI on the main queue
+                DispatchQueue.main.async {
+                    // Assign the downloaded image to your UIImageView
+                    self.flagImage.image = image
+                }
+            } else {
+                // Handle nil data or failed image creation
+                print("Failed to create image from data")
+            }
+        }.resume()
+    }
 }
 
 // Extension to UIImageView to load image from URL asynchronously

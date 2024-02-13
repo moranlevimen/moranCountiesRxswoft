@@ -12,8 +12,8 @@ class CountriesViewModel {
     
     let urlString = "https://restcountries.com/v3.1/all"
     var countries: [Countries] = [] // This will hold the fetched countries data
-    var countries: [Country] = []
-    var data: Observable<[countries]> = Observable()
+    var data: Observable<[Countries]> = Observable([])
+
 
     func fetchData() {
         if let url = URL(string: urlString) {
@@ -23,8 +23,7 @@ class CountriesViewModel {
                 case .success(let countries):
                     strongSelf.countries = countries
                     strongSelf.data.value = countries
-                    
-                    // Notify observers here
+      
                 case .failure(let error):
                     // Handle error
                     print("Error fetching data:", error)
