@@ -101,7 +101,7 @@
                     </view>
                     <navigationItem key="navigationItem" id="FH9-P2-sMX"/>
                     <connections>
-                        <outlet property="flagImageView" destination="ETe-Zw-hbM" id="mWr-tj-YYs"/>
+                        <outlet property="flagImage" destination="ETe-Zw-hbM" id="4P4-np-QrV"/>
                         <outlet property="regionLabel" destination="iN6-1X-A4e" id="rVa-Id-lWF"/>
                         <outlet property="subregionLabel" destination="THt-rT-AXs" id="oCf-0A-7B0"/>
                     </connections>

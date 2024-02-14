@@ -13,6 +13,7 @@ class ViewController: UIViewController {
     var countriesViewModel: CountriesViewModel?
     var searchCountry = [String]()
     var searching = false
+
     private var cancellables = Set<AnyCancellable>()
     private var countries: [Countries] = [] // New property to hold the fetched countries
     
@@ -24,7 +25,7 @@ class ViewController: UIViewController {
         countriesViewModel = CountriesViewModel()
         
         let savedCountries = countriesViewModel?.retrieveSavedCountries() ?? []
-        
+        countriesViewModel?.refreshList()
         countriesViewModel?.data
             .sink(receiveCompletion: { completion in
                 switch completion {
@@ -35,8 +36,9 @@ class ViewController: UIViewController {
                     break
                 }
             }, receiveValue: { [weak self] countries in
-                // Update the countries array of the view model
-                self?.countries = countries
+                // Merge saved countries with fetched countries and update the array
+                let mergedCountries = self?.mergeSavedAndFetchedCountries(savedCountries: savedCountries, fetchedCountries: countries) ?? []
+                self?.countries = mergedCountries
                 self?.tableView.reloadData()
             })
             .store(in: &cancellables)
@@ -47,18 +49,36 @@ class ViewController: UIViewController {
         tableView.register(nib, forCellReuseIdentifier: "countiresTableViewCell")
         title = "search"
     }
-}
-    
-    private var cancellables: Set<AnyCancellable> = []
 
- func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        if segue.identifier == "toDetailsVC" {
-            if let destinationVC = segue.destination as? CountryDetailsViewController,
-               let selectedCountry = sender as? Countries {
-                destinationVC.country = selectedCountry
+    // Function to merge saved countries with fetched countries
+    func mergeSavedAndFetchedCountries(savedCountries: [Countries], fetchedCountries: [Countries]) -> [Countries] {
+        var mergedCountries = [Countries]()
+        
+        // Add saved countries at the top of the list and mark them as saved
+        for savedCountry in savedCountries {
+            if let index = fetchedCountries.firstIndex(where: { $0.name == savedCountry.name }) {
+                // Highlight saved country
+                var country = fetchedCountries[index]
+                country.saved = true
+                mergedCountries.append(country)
             }
         }
+        
+        // Add fetched countries that are not already saved
+        for country in fetchedCountries {
+            if !savedCountries.contains(where: { $0.name == country.name }) {
+                mergedCountries.append(country)
+            }
+        }
+        
+        return mergedCountries
     }
+
+}
+
+private var cancellables: Set<AnyCancellable> = []
+
+
 
 extension ViewController: UITableViewDataSource, UITableViewDelegate {
     
@@ -75,36 +95,52 @@ extension ViewController: UITableViewDataSource, UITableViewDelegate {
         
         if searching {
             cell.countyLabel.text = searchCountry[indexPath.row]
+            cell.flagImage.text = searchCountry[indexPath.row]
         } else {
             cell.countyLabel.text = countries[indexPath.row].name?.common
+        }
+        
             if countries[indexPath.row].flag != nil {
                 cell.flagImage.text = countries[indexPath.row].flag
             } else {
                 cell.flagImage.isHidden = true
                 cell.defaultFlagImageview.image = UIImage(named: "UnknownFlag")
             }
-        }
         return cell
+    }
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if segue.identifier == "toDetailsVC" {
+            if let destinationVC = segue.destination as? CountryDetailsViewController,
+               let selectedCountry = sender as? Countries {
+                destinationVC.country = selectedCountry
+            }
+        }
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         tableView.deselectRow(at: indexPath, animated: true)
         
-//        // Optional binding to unwrap countries
-//           if let selectedCountry = countries[safe: indexPath.row] {
-//               performSegue(withIdentifier: "toDetailsVC", sender: selectedCountry)
-//        }
+        // Optional binding to unwrap countries
+        if let selectedCountry = countries[safe: indexPath.row] {
+            performSegue(withIdentifier: "toDetailsVC", sender: selectedCountry)
+        }
     }
 }
 
 extension ViewController: UISearchBarDelegate {
     
     func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
-        searchCountry = countries.filter {
-            $0.name?.common.prefix(searchText.count) ?? "m" == searchText
-        }.compactMap { $0.name?.common }
-        searching = true
-        tableView.reloadData()
+        if searchText.isEmpty {
+               searchCountry = []
+               searching = false
+           } else {
+               searchCountry = countries.filter {
+                   $0.name?.common.prefix(searchText.count) ?? "" == searchText
+               }.compactMap { $0.name?.common }
+               searching = true
+           }
+           tableView.reloadData()
     }
 }
 
