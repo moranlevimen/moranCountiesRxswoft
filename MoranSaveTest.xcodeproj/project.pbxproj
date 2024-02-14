@@ -7,16 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		EE2A4C232B7CB32B00B7B0CF /* RxBlocking in Frameworks */ = {isa = PBXBuildFile; productRef = EE2A4C222B7CB32B00B7B0CF /* RxBlocking */; };
-		EE2A4C252B7CB32B00B7B0CF /* RxBlocking-Dynamic in Frameworks */ = {isa = PBXBuildFile; productRef = EE2A4C242B7CB32B00B7B0CF /* RxBlocking-Dynamic */; };
-		EE2A4C272B7CB32B00B7B0CF /* RxCocoa in Frameworks */ = {isa = PBXBuildFile; productRef = EE2A4C262B7CB32B00B7B0CF /* RxCocoa */; };
-		EE2A4C292B7CB32B00B7B0CF /* RxCocoa-Dynamic in Frameworks */ = {isa = PBXBuildFile; productRef = EE2A4C282B7CB32B00B7B0CF /* RxCocoa-Dynamic */; };
-		EE2A4C2B2B7CB32B00B7B0CF /* RxRelay in Frameworks */ = {isa = PBXBuildFile; productRef = EE2A4C2A2B7CB32B00B7B0CF /* RxRelay */; };
-		EE2A4C2D2B7CB32B00B7B0CF /* RxRelay-Dynamic in Frameworks */ = {isa = PBXBuildFile; productRef = EE2A4C2C2B7CB32B00B7B0CF /* RxRelay-Dynamic */; };
-		EE2A4C2F2B7CB32B00B7B0CF /* RxSwift in Frameworks */ = {isa = PBXBuildFile; productRef = EE2A4C2E2B7CB32B00B7B0CF /* RxSwift */; };
-		EE2A4C312B7CB32B00B7B0CF /* RxSwift-Dynamic in Frameworks */ = {isa = PBXBuildFile; productRef = EE2A4C302B7CB32B00B7B0CF /* RxSwift-Dynamic */; };
-		EE2A4C332B7CB32B00B7B0CF /* RxTest in Frameworks */ = {isa = PBXBuildFile; productRef = EE2A4C322B7CB32B00B7B0CF /* RxTest */; };
-		EE2A4C352B7CB32C00B7B0CF /* RxTest-Dynamic in Frameworks */ = {isa = PBXBuildFile; productRef = EE2A4C342B7CB32B00B7B0CF /* RxTest-Dynamic */; };
+		2C9D4A79DB58A14F2A41CE07 /* Pods_MoranSaveTest.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C65D4F5EC88E8456FA491962 /* Pods_MoranSaveTest.framework */; };
 		EE8363D52B7B65580000A91D /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = EE8363D42B7B65580000A91D /* AppDelegate.swift */; };
 		EE8363D72B7B65580000A91D /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = EE8363D62B7B65580000A91D /* SceneDelegate.swift */; };
 		EE8363D92B7B65580000A91D /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EE8363D82B7B65580000A91D /* ViewController.swift */; };
@@ -34,7 +25,22 @@
 		EE8363F92B7BAB1D0000A91D /* CountryDetailsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EE8363F82B7BAB1D0000A91D /* CountryDetailsViewController.swift */; };
 /* End PBXBuildFile section */
 
+/* Begin PBXCopyFilesBuildPhase section */
+		EE6749A42B7CB93B003D4416 /* Embed Frameworks */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 10;
+			files = (
+			);
+			name = "Embed Frameworks";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXCopyFilesBuildPhase section */
+
 /* Begin PBXFileReference section */
+		7A7093FB663E1ECE9EC495D9 /* Pods-MoranSaveTest.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MoranSaveTest.debug.xcconfig"; path = "Target Support Files/Pods-MoranSaveTest/Pods-MoranSaveTest.debug.xcconfig"; sourceTree = "<group>"; };
+		C65D4F5EC88E8456FA491962 /* Pods_MoranSaveTest.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_MoranSaveTest.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		EE8363D12B7B65580000A91D /* MoranSaveTest.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MoranSaveTest.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		EE8363D42B7B65580000A91D /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		EE8363D62B7B65580000A91D /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -52,6 +58,7 @@
 		EE8363F42B7B829E0000A91D /* CountiresTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CountiresTableViewCell.swift; sourceTree = "<group>"; };
 		EE8363F62B7B88690000A91D /* CountriesCellViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CountriesCellViewModel.swift; sourceTree = "<group>"; };
 		EE8363F82B7BAB1D0000A91D /* CountryDetailsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CountryDetailsViewController.swift; sourceTree = "<group>"; };
+		F79421DC0830B3CE5523A77F /* Pods-MoranSaveTest.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MoranSaveTest.release.xcconfig"; path = "Target Support Files/Pods-MoranSaveTest/Pods-MoranSaveTest.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -59,22 +66,21 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				EE2A4C312B7CB32B00B7B0CF /* RxSwift-Dynamic in Frameworks */,
-				EE2A4C332B7CB32B00B7B0CF /* RxTest in Frameworks */,
-				EE2A4C2B2B7CB32B00B7B0CF /* RxRelay in Frameworks */,
-				EE2A4C292B7CB32B00B7B0CF /* RxCocoa-Dynamic in Frameworks */,
-				EE2A4C2D2B7CB32B00B7B0CF /* RxRelay-Dynamic in Frameworks */,
-				EE2A4C272B7CB32B00B7B0CF /* RxCocoa in Frameworks */,
-				EE2A4C232B7CB32B00B7B0CF /* RxBlocking in Frameworks */,
-				EE2A4C252B7CB32B00B7B0CF /* RxBlocking-Dynamic in Frameworks */,
-				EE2A4C352B7CB32C00B7B0CF /* RxTest-Dynamic in Frameworks */,
-				EE2A4C2F2B7CB32B00B7B0CF /* RxSwift in Frameworks */,
+				2C9D4A79DB58A14F2A41CE07 /* Pods_MoranSaveTest.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		2AE9CA1BDAB11BBFDABE70BC /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				C65D4F5EC88E8456FA491962 /* Pods_MoranSaveTest.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
 		EE58733B2B7CABFF000C9D57 /* Model */ = {
 			isa = PBXGroup;
 			children = (
@@ -115,6 +121,8 @@
 			children = (
 				EE8363D32B7B65580000A91D /* MoranSaveTest */,
 				EE8363D22B7B65580000A91D /* Products */,
+				F60189CEDFE61FE0F358F6C4 /* Pods */,
+				2AE9CA1BDAB11BBFDABE70BC /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -138,6 +146,16 @@
 			path = MoranSaveTest;
 			sourceTree = "<group>";
 		};
+		F60189CEDFE61FE0F358F6C4 /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				7A7093FB663E1ECE9EC495D9 /* Pods-MoranSaveTest.debug.xcconfig */,
+				F79421DC0830B3CE5523A77F /* Pods-MoranSaveTest.release.xcconfig */,
+			);
+			name = Pods;
+			path = Pods;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -145,27 +163,18 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = EE8363E52B7B65600000A91D /* Build configuration list for PBXNativeTarget "MoranSaveTest" */;
 			buildPhases = (
+				B23FC6F8F22F23514440C5D1 /* [CP] Check Pods Manifest.lock */,
 				EE8363CD2B7B65580000A91D /* Sources */,
 				EE8363CE2B7B65580000A91D /* Frameworks */,
 				EE8363CF2B7B65580000A91D /* Resources */,
+				EE6749A42B7CB93B003D4416 /* Embed Frameworks */,
+				0F43C98670393CCF98E0B81A /* [CP] Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
 			dependencies = (
 			);
 			name = MoranSaveTest;
-			packageProductDependencies = (
-				EE2A4C222B7CB32B00B7B0CF /* RxBlocking */,
-				EE2A4C242B7CB32B00B7B0CF /* RxBlocking-Dynamic */,
-				EE2A4C262B7CB32B00B7B0CF /* RxCocoa */,
-				EE2A4C282B7CB32B00B7B0CF /* RxCocoa-Dynamic */,
-				EE2A4C2A2B7CB32B00B7B0CF /* RxRelay */,
-				EE2A4C2C2B7CB32B00B7B0CF /* RxRelay-Dynamic */,
-				EE2A4C2E2B7CB32B00B7B0CF /* RxSwift */,
-				EE2A4C302B7CB32B00B7B0CF /* RxSwift-Dynamic */,
-				EE2A4C322B7CB32B00B7B0CF /* RxTest */,
-				EE2A4C342B7CB32B00B7B0CF /* RxTest-Dynamic */,
-			);
 			productName = MoranSaveTest;
 			productReference = EE8363D12B7B65580000A91D /* MoranSaveTest.app */;
 			productType = "com.apple.product-type.application";
@@ -194,9 +203,6 @@
 				Base,
 			);
 			mainGroup = EE8363C82B7B65580000A91D;
-			packageReferences = (
-				EE2A4C212B7CB32B00B7B0CF /* XCRemoteSwiftPackageReference "RxSwift" */,
-			);
 			productRefGroup = EE8363D22B7B65580000A91D /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
@@ -219,6 +225,48 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		0F43C98670393CCF98E0B81A /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-MoranSaveTest/Pods-MoranSaveTest-frameworks-${CONFIGURATION}-input-files.xcfilelist",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-MoranSaveTest/Pods-MoranSaveTest-frameworks-${CONFIGURATION}-output-files.xcfilelist",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-MoranSaveTest/Pods-MoranSaveTest-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		B23FC6F8F22F23514440C5D1 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-MoranSaveTest-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
 		EE8363CD2B7B65580000A91D /* Sources */ = {
@@ -379,6 +427,7 @@
 		};
 		EE8363E62B7B65600000A91D /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 7A7093FB663E1ECE9EC495D9 /* Pods-MoranSaveTest.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
@@ -406,6 +455,7 @@
 		};
 		EE8363E72B7B65600000A91D /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = F79421DC0830B3CE5523A77F /* Pods-MoranSaveTest.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
@@ -453,70 +503,6 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
-
-/* Begin XCRemoteSwiftPackageReference section */
-		EE2A4C212B7CB32B00B7B0CF /* XCRemoteSwiftPackageReference "RxSwift" */ = {
-			isa = XCRemoteSwiftPackageReference;
-			repositoryURL = "https://github.com/ReactiveX/RxSwift.git";
-			requirement = {
-				branch = main;
-				kind = branch;
-			};
-		};
-/* End XCRemoteSwiftPackageReference section */
-
-/* Begin XCSwiftPackageProductDependency section */
-		EE2A4C222B7CB32B00B7B0CF /* RxBlocking */ = {
-			isa = XCSwiftPackageProductDependency;
-			package = EE2A4C212B7CB32B00B7B0CF /* XCRemoteSwiftPackageReference "RxSwift" */;
-			productName = RxBlocking;
-		};
-		EE2A4C242B7CB32B00B7B0CF /* RxBlocking-Dynamic */ = {
-			isa = XCSwiftPackageProductDependency;
-			package = EE2A4C212B7CB32B00B7B0CF /* XCRemoteSwiftPackageReference "RxSwift" */;
-			productName = "RxBlocking-Dynamic";
-		};
-		EE2A4C262B7CB32B00B7B0CF /* RxCocoa */ = {
-			isa = XCSwiftPackageProductDependency;
-			package = EE2A4C212B7CB32B00B7B0CF /* XCRemoteSwiftPackageReference "RxSwift" */;
-			productName = RxCocoa;
-		};
-		EE2A4C282B7CB32B00B7B0CF /* RxCocoa-Dynamic */ = {
-			isa = XCSwiftPackageProductDependency;
-			package = EE2A4C212B7CB32B00B7B0CF /* XCRemoteSwiftPackageReference "RxSwift" */;
-			productName = "RxCocoa-Dynamic";
-		};
-		EE2A4C2A2B7CB32B00B7B0CF /* RxRelay */ = {
-			isa = XCSwiftPackageProductDependency;
-			package = EE2A4C212B7CB32B00B7B0CF /* XCRemoteSwiftPackageReference "RxSwift" */;
-			productName = RxRelay;
-		};
-		EE2A4C2C2B7CB32B00B7B0CF /* RxRelay-Dynamic */ = {
-			isa = XCSwiftPackageProductDependency;
-			package = EE2A4C212B7CB32B00B7B0CF /* XCRemoteSwiftPackageReference "RxSwift" */;
-			productName = "RxRelay-Dynamic";
-		};
-		EE2A4C2E2B7CB32B00B7B0CF /* RxSwift */ = {
-			isa = XCSwiftPackageProductDependency;
-			package = EE2A4C212B7CB32B00B7B0CF /* XCRemoteSwiftPackageReference "RxSwift" */;
-			productName = RxSwift;
-		};
-		EE2A4C302B7CB32B00B7B0CF /* RxSwift-Dynamic */ = {
-			isa = XCSwiftPackageProductDependency;
-			package = EE2A4C212B7CB32B00B7B0CF /* XCRemoteSwiftPackageReference "RxSwift" */;
-			productName = "RxSwift-Dynamic";
-		};
-		EE2A4C322B7CB32B00B7B0CF /* RxTest */ = {
-			isa = XCSwiftPackageProductDependency;
-			package = EE2A4C212B7CB32B00B7B0CF /* XCRemoteSwiftPackageReference "RxSwift" */;
-			productName = RxTest;
-		};
-		EE2A4C342B7CB32B00B7B0CF /* RxTest-Dynamic */ = {
-			isa = XCSwiftPackageProductDependency;
-			package = EE2A4C212B7CB32B00B7B0CF /* XCRemoteSwiftPackageReference "RxSwift" */;
-			productName = "RxTest-Dynamic";
-		};
-/* End XCSwiftPackageProductDependency section */
 	};
 	rootObject = EE8363C92B7B65580000A91D /* Project object */;
 }
