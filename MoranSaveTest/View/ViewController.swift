@@ -13,8 +13,8 @@ class ViewController: UIViewController {
     var countriesViewModel: CountriesViewModel?
     var searchCountry = [String]()
     var searching = false
-    var countries: [Countries] = [] // This will hold the list of countries to display
-    
+    private var cancellables = Set<AnyCancellable>()
+    private var countries: [Countries] = [] // New property to hold the fetched countries
     
     @IBOutlet weak var searchBar: UISearchBar!
     @IBOutlet weak var tableView: UITableView!
@@ -24,32 +24,49 @@ class ViewController: UIViewController {
         countriesViewModel = CountriesViewModel()
         
         let savedCountries = countriesViewModel?.retrieveSavedCountries() ?? []
-        countries.append(contentsOf: savedCountries)
+        
+        countriesViewModel?.data
+            .sink(receiveCompletion: { completion in
+                switch completion {
+                case .failure(let error):
+                    // Handle error
+                    print("Error:", error)
+                case .finished:
+                    break
+                }
+            }, receiveValue: { [weak self] countries in
+                // Update the countries array of the view model
+                self?.countries = countries
+                self?.tableView.reloadData()
+            })
+            .store(in: &cancellables)
         
         countriesViewModel?.fetchData()
         
         let nib = UINib(nibName: "CountiresCell", bundle: nil)
         tableView.register(nib, forCellReuseIdentifier: "countiresTableViewCell")
-        binding()
         title = "search"
     }
+}
     
-    private func binding() {
-        countriesViewModel?.data.bind { [weak self] _ in
-            self?.tableView.reloadData()
+    private var cancellables: Set<AnyCancellable> = []
+
+ func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if segue.identifier == "toDetailsVC" {
+            if let destinationVC = segue.destination as? CountryDetailsViewController,
+               let selectedCountry = sender as? Countries {
+                destinationVC.country = selectedCountry
+            }
         }
     }
-    
-    
-}
 
 extension ViewController: UITableViewDataSource, UITableViewDelegate {
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         if searching {
             return searchCountry.count
-        }else {
-            return countriesViewModel?.countries.count ?? 0
+        } else {
+            return countries.count
         }
     }
     
@@ -59,11 +76,10 @@ extension ViewController: UITableViewDataSource, UITableViewDelegate {
         if searching {
             cell.countyLabel.text = searchCountry[indexPath.row]
         } else {
-            cell.countyLabel.text = countriesViewModel?.countries[indexPath.row].name?.common
-            if countriesViewModel?.countries[indexPath.row].flag != nil {
-                cell.flagImage.text = countriesViewModel?.countries[indexPath.row].flag
-            }
-            else {
+            cell.countyLabel.text = countries[indexPath.row].name?.common
+            if countries[indexPath.row].flag != nil {
+                cell.flagImage.text = countries[indexPath.row].flag
+            } else {
                 cell.flagImage.isHidden = true
                 cell.defaultFlagImageview.image = UIImage(named: "UnknownFlag")
             }
@@ -71,34 +87,29 @@ extension ViewController: UITableViewDataSource, UITableViewDelegate {
         return cell
     }
     
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        if segue.identifier == "toDetailsVC" {
-            if let destinationVC = segue.destination as? CountryDetailsViewController,
-               let selectedCountry = sender as? Countries {
-                destinationVC.country = selectedCountry
-            }
-        }
-    }
-    
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         tableView.deselectRow(at: indexPath, animated: true)
-        guard let selectedCountry = countriesViewModel?.countries[indexPath.row] else {
-                return
-            }
-        // Use performSegue(withIdentifier:sender:) to trigger the segue
-        performSegue(withIdentifier: "toDetailsVC", sender: selectedCountry)
+        
+//        // Optional binding to unwrap countries
+//           if let selectedCountry = countries[safe: indexPath.row] {
+//               performSegue(withIdentifier: "toDetailsVC", sender: selectedCountry)
+//        }
     }
 }
-
 
 extension ViewController: UISearchBarDelegate {
     
     func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
-        searchCountry = countriesViewModel?.countries.filter {
+        searchCountry = countries.filter {
             $0.name?.common.prefix(searchText.count) ?? "m" == searchText
-        }.compactMap { $0.name?.common } ?? []
+        }.compactMap { $0.name?.common }
         searching = true
         tableView.reloadData()
     }
-    
+}
+
+extension Collection {
+    subscript(safe index: Index) -> Element? {
+        return indices.contains(index) ? self[index] : nil
+    }
 }
