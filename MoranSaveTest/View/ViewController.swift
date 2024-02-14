@@ -25,7 +25,7 @@ class ViewController: UIViewController {
         countriesViewModel = CountriesViewModel()
         
         let savedCountries = countriesViewModel?.retrieveSavedCountries() ?? []
-        countriesViewModel?.refreshList()
+
         countriesViewModel?.data
             .sink(receiveCompletion: { completion in
                 switch completion {
@@ -94,21 +94,30 @@ extension ViewController: UITableViewDataSource, UITableViewDelegate {
         let cell = tableView.dequeueReusableCell(withIdentifier: "countiresTableViewCell", for: indexPath) as! CountiresTableViewCell
         
         if searching {
-            cell.countyLabel.text = searchCountry[indexPath.row]
-            cell.flagImage.text = searchCountry[indexPath.row]
-        } else {
-            cell.countyLabel.text = countries[indexPath.row].name?.common
-        }
-        
-            if countries[indexPath.row].flag != nil {
-                cell.flagImage.text = countries[indexPath.row].flag
+            let countryName = searchCountry[indexPath.row]
+            cell.countyLabel.text = countryName
+            
+            // Find the corresponding flag for the searched country
+            if let country = countries.first(where: { $0.name?.common == countryName }), let flag = country.flag {
+                cell.flagImage.text = flag
             } else {
                 cell.flagImage.isHidden = true
                 cell.defaultFlagImageview.image = UIImage(named: "UnknownFlag")
             }
+        } else {
+            let country = countries[indexPath.row]
+            cell.countyLabel.text = country.name?.common
+            
+            if let flag = country.flag {
+                cell.flagImage.text = flag
+            } else {
+                cell.flagImage.isHidden = true
+                cell.defaultFlagImageview.image = UIImage(named: "UnknownFlag")
+            }
+        }
+        
         return cell
     }
-    
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == "toDetailsVC" {
             if let destinationVC = segue.destination as? CountryDetailsViewController,
@@ -120,11 +129,28 @@ extension ViewController: UITableViewDataSource, UITableViewDelegate {
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         tableView.deselectRow(at: indexPath, animated: true)
+          
+          let selectedCountry: Countries
+          
+          if searching {
+              if let countryName = searchCountry[safe: indexPath.row],
+                 let country = countries.first(where: { $0.name?.common == countryName }) {
+                  selectedCountry = country
+              } else {
+                  // Handle the scenario where the selected country is not found
+                  return
+              }
+          } else {
+              if let country = countries[safe: indexPath.row] {
+                  selectedCountry = country
+              } else {
+                  // Handle the scenario where the selected country is not found
+                  return
+              }
+          }
+          
+          performSegue(withIdentifier: "toDetailsVC", sender: selectedCountry)
         
-        // Optional binding to unwrap countries
-        if let selectedCountry = countries[safe: indexPath.row] {
-            performSegue(withIdentifier: "toDetailsVC", sender: selectedCountry)
-        }
     }
 }
 
